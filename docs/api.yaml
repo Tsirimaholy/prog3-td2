@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: Title
+  description: Title
+  version: 1.0.0
+servers:
+  - url: "https"
+paths:
+  "/matchs":
+    get:
+      tags:
+        - Match
+      description: Get the list of all match
+      summary: Get List of all match
+      responses:
+        200:
+          description: list of all match
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Match"
+components:
+  schemas:
+    Player:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    CreatePlayer:
+      type: object
+      properties:
+        name:
+          type: string
+        number:
+          type: string
+    
+    Sponsor:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+
+    Team:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        players:
+          type: array
+          items:
+            allOf:
+              - $ref: "#/components/schemas/Player"
+        sponsor:
+          type: array
+          items:
+            allOf:
+              - $ref: "#/components/schemas/Sponsor"
+
+    Match:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/UpdateMatch"
+    UpdateMatch:
+      type: object
+      properties:
+        id:
+          type: integer
+      allOf:
+        - $ref: "#/components/schemas/CreateMatch"
+    CreateMatch:
+      type: object
+      properties:
+        date_time:
+          type: string
+          format: date
+        team_a:
+          $ref: "#/components/schemas/Team"
+        team_b:
+          $ref: "#/components/schemas/Team"
