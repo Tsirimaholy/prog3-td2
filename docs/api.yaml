@@ -4,7 +4,7 @@ info:
   description: Title
   version: 1.0.0
 servers:
-  - url: "https"
+  - url: "http://localhost:8080"
 paths:
   "/matchs":
     get:
