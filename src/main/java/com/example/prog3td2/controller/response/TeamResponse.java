@@ -14,5 +14,5 @@ import lombok.Data;
 public class TeamResponse {
     private int id;
     private String name;
-    private List<Player> players;
+    private List<PlayerResponse> players;
 }

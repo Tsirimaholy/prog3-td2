@@ -16,6 +16,6 @@ import lombok.Setter;
 public class PlayAgainstResponse {
     private int id;
     private Instant dateTime;
-    private Team teamA;
-    private Team teamB;
+    private TeamResponse teamA;
+    private TeamResponse teamB;
 }

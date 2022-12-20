@@ -1,5 +1,6 @@
 package com.example.prog3td2.controller.mapper;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import com.example.prog3td2.controller.response.PlayAgainstResponse;
@@ -9,23 +10,25 @@ import com.example.prog3td2.model.PlayAgainst;
  * PlayAgainstMapper
  */
 @Component
+@AllArgsConstructor
 public class PlayAgainstMapper {
+    public final TeamMapper teamMapper;
 
     public PlayAgainst toDomain(PlayAgainstResponse rest) {
         return PlayAgainst.builder()
                 .dateTime(rest.getDateTime())
                 .id(rest.getId())
-                .team1(rest.getTeamA())
-                .team2(rest.getTeamB())
+                .team1(teamMapper.toDomain(rest.getTeamA()))
+                .team2(teamMapper.toDomain(rest.getTeamB()))
                 .build();
     }
 
-    public PlayAgainstResponse torest(PlayAgainst domain){
+    public PlayAgainstResponse toRest(PlayAgainst domain){
         return PlayAgainstResponse.builder()
                     .id(domain.getId())
                     .dateTime(domain.getDateTime())
-                    .teamA(domain.getTeam1())
-                    .teamB(domain.getTeam2())
+                    .teamA(teamMapper.toRest(domain.getTeam1()))
+                    .teamB(teamMapper.toRest(domain.getTeam2()))
                     .build();
     }
 }

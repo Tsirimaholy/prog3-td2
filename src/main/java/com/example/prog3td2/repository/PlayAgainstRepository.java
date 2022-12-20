@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.example.prog3td2.model.PlayAgainst;
 
 @Repository
-public interface PlayAgainstrepository extends JpaRepository<PlayAgainst, Integer>{
-    
+public interface PlayAgainstRepository extends JpaRepository<PlayAgainst, Integer>{
+
 }
