@@ -34,6 +34,6 @@ CREATE TABLE "play_against"
     team2_id INTEGER REFERENCES team (id),
     stadium VARCHAR(100),
     date_time timestamp,
-    CONSTRAINT team_are_different CHECK ( team2_id != team2_id ),
+    CONSTRAINT team_are_different CHECK ( team2_id != team1_id ),
     UNIQUE (team1_id, team2_id)
 );
